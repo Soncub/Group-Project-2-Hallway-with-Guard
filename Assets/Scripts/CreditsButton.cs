@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayButton : MonoBehaviour
+public class CreditsButton : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,6 +18,6 @@ public class PlayButton : MonoBehaviour
     }
     public void LoadLevel1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("PlayScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CreditsScreen");
     }
 }
