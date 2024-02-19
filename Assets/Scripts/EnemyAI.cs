@@ -5,26 +5,41 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public NavMeshAgent enemy;
-    public Transform Player;
-    public Transform[] waypoints;
-    private int _currentWaypointIndex = 0;
-    private float _speed = 2f;
-    void Start()
+    public Transform player;
+    public LayerMask whatIsGround, whatIsPlayer;
+    public Vector3 walkPoint;
+    bool walkPointSet;
+    public float walkPointRange;
+    public float sightRange;
+    public bool playerInSightRange;
+
+    private void Awake()
     {
-        
+        player = GameObject.Find("Player").transform;
+        enemy = GetComponent<NavMeshAgent>();
     }
-    void Update()
+    private void Update()
     {
-        Transform wp = waypoints[_currentWaypointIndex];
-        if (Vector3.Distance(transform.position, wp.position) < 0.02f)
-        {
-            _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Length;
-        }
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, wp.position, _speed * Time.deltaTime);
-            transform.LookAt(wp.position);
-            enemy.SetDestination(Player.position);
-        }
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        if(!playerInSightRange) Patrol();
+        if(playerInSightRange) Chase();
+    }
+    private void Patrol()
+    {
+        if (!walkPointSet)SearchWalkPoint();
+        if (walkPointSet)enemy.SetDestination(walkPoint);
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
+    }
+    private void SearchWalkPoint()
+    {
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+        if (Physics.Raycast(walkPoint,-transform.up,2f,whatIsGround)) walkPointSet=true;
+    }
+    private void Chase()
+    {
+        enemy.SetDestination(player.position);
     }
 }
