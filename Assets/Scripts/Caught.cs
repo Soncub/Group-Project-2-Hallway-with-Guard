@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ItemGet : MonoBehaviour
+public class Caught : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.transform.tag == "Macguffin")
+        if(other.transform.tag == "Enemy")
         {
             Debug.Log("Worked");
-            UnityEngine.SceneManagement.SceneManager.LoadScene("WinScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScene");
         }
     }
 }
