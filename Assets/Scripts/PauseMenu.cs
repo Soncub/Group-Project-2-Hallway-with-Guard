@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        Debug.Log("Worked");
     }
     public void Resume()
     {
@@ -35,10 +36,13 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        Debug.Log("Unpaused");
     }
     public void Menu()
     {
         Time.timeScale = 1f;
+        GameIsPaused = false;
+        pauseMenu.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
     }
     public void Quit()
