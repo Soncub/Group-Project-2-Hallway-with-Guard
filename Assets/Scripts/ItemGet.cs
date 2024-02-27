@@ -9,7 +9,7 @@ public class ItemGet : MonoBehaviour
     {
         if(other.transform.tag == "Macguffin")
         {
-            Debug.Log("Worked");
+            Cursor.lockState = CursorLockMode.None;
             UnityEngine.SceneManagement.SceneManager.LoadScene("WinScene");
         }
     }

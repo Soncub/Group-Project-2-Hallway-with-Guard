@@ -9,7 +9,7 @@ public class Caught : MonoBehaviour
     {
         if(other.transform.tag == "Enemy")
         {
-            Debug.Log("Worked");
+            Cursor.lockState = CursorLockMode.None;
             UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScene");
         }
     }

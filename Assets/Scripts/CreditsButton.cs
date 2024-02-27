@@ -18,6 +18,6 @@ public class CreditsButton : MonoBehaviour
     }
     public void LoadLevel1()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CreditsScreen");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CreditsScene");
     }
 }
