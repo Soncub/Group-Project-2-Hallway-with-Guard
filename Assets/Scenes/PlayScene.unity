@@ -3354,6 +3354,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1009881248025144231, guid: 9c15140e60265cd4985c0ac60ea4d5e6, type: 3}
   m_PrefabInstance: {fileID: 599078848}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &599078850 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 616662622809805157, guid: 9c15140e60265cd4985c0ac60ea4d5e6, type: 3}
+  m_PrefabInstance: {fileID: 599078848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &667282404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3793,11 +3798,12 @@ MonoBehaviour:
   player: {fileID: 721043818}
   controller: {fileID: 721043817}
   groundCheck: {fileID: 1882891979}
+  animator: {fileID: 599078850}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  speed: 4
+  speed: 2
   rotateSpeed: 100
   gravity: -19.62
 --- !u!143 &721043817
