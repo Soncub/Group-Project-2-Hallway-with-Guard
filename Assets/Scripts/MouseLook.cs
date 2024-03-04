@@ -8,6 +8,7 @@ public class MouseLook : MonoBehaviour
     // Sensitivity for Mouselook. Default is 1000. Scale should likely be 100-2000.
 
     float xRotation = 0f;
+    float yRotation = 0f;
     // Rotation variable for looking up and down.
 
     void Start()
@@ -18,14 +19,22 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseY = (Input.GetAxis("Mouse Y")) * mouseSensitivity * Time.deltaTime;
         // Gets input for Y axis. Unity should be able to configure this for Joysticks. Kept framerate independent with deltaTime.
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 40f);
         // Setting the rotation variable to the right value.
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        // Gets input for Y axis. Unity should be able to configure this for Joysticks. Kept framerate independent with deltaTime.
+
+        yRotation -= -mouseX;
+        yRotation = Mathf.Clamp(yRotation, -45f, 45f);
+        // Setting the rotation variable to the right value.
+
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         // Applying the rotation variable value to the actual camera.
+        
     }
 }

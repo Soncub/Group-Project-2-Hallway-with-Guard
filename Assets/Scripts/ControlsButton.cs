@@ -19,5 +19,6 @@ public class ControlsButton : MonoBehaviour
     public void LoadLevel1()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("ControlsScene");
+        FindObjectOfType<AudioManager>().Play("Button");
     }
 }

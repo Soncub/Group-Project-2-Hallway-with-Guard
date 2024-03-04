@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     // Character Controller component of the player parent object.
 
     public Transform groundCheck;
+    public Animator animator;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     // Stuff for gravity. Ground Check object transform, distance checked for ground, and looking for the ground mask.
@@ -43,6 +44,28 @@ public class PlayerMovement : MonoBehaviour
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+        if (z > 0)
+        {
+            DoAnimation("Forward");
+        }
+        else if (x > 0)
+        {
+            DoAnimation("Right");
+        }
+        else if (x < 0)
+        {
+            DoAnimation("Left");
+        }
+        
+        else if (z<0)
+        {
+            DoAnimation("Backward");
+        }
+        else
+        {
+            DoAnimation("Idle");
+        }
         // Gets input for "Horizontal" and "Vertical" axis, which is WASD and Arrow keys. Should be configurable to include controller.
 
         player.Rotate(Vector3.up * x * rotateSpeed * Time.deltaTime);
@@ -59,5 +82,10 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
         // Applies velocity as falling.
+    }
+
+    void DoAnimation(string MyAnimation)
+    {
+        animator.Play(MyAnimation);
     }
 }

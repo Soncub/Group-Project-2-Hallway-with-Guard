@@ -11,6 +11,7 @@ public class Caught : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             UnityEngine.SceneManagement.SceneManager.LoadScene("LoseScene");
+            FindObjectOfType<AudioManager>().Play("GameOver");
         }
     }
 }

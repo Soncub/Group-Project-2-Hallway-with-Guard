@@ -19,5 +19,6 @@ public class MenuButton : MonoBehaviour
     public void LoadLevel1()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
+        FindObjectOfType<AudioManager>().Play("Button");
     }
 }
