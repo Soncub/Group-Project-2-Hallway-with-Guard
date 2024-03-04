@@ -23,7 +23,7 @@ public class MouseLook : MonoBehaviour
         // Gets input for Y axis. Unity should be able to configure this for Joysticks. Kept framerate independent with deltaTime.
 
         xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 45f);
+        xRotation = Mathf.Clamp(xRotation, -90f, 40f);
         // Setting the rotation variable to the right value.
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;

@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     [SerializeField] GameObject pauseMenu;
-
+    public EventSystem eventSystem;
+    public Button buttonToFocus;
     void Update()
     {
         if (Input.GetButtonDown("Jump"))
@@ -24,10 +27,12 @@ public class PauseMenu : MonoBehaviour
     }
     void Pause()
     {
+       
         Cursor.lockState = CursorLockMode.None;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        EventSystem.current.SetSelectedGameObject(buttonToFocus.gameObject);
         Debug.Log("Worked");
     }
     public void Resume()
