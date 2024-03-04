@@ -49,9 +49,11 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         pauseMenu.SetActive(false);
         UnityEngine.SceneManagement.SceneManager.LoadScene("MenuScene");
+        FindObjectOfType<AudioManager>().Play("Button");
     }
     public void Quit()
     {
         Application.Quit();
+        FindObjectOfType<AudioManager>().Play("ButtonClose");
     }
 }

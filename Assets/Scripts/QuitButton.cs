@@ -19,5 +19,6 @@ public class QuitButton : MonoBehaviour
     public void LoadLevel1()
     {
         Application.Quit();
+        FindObjectOfType<AudioManager>().Play("ButtonClose");
     }
 }
