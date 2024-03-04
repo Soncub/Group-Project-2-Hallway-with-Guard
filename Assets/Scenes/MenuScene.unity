@@ -1519,7 +1519,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5512634879653037314, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
       propertyPath: sounds.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5512634879653037314, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
       propertyPath: sounds.Array.data[0].clip
@@ -1546,6 +1546,14 @@ PrefabInstance:
       value: GameOver
       objectReference: {fileID: 0}
     - target: {fileID: 5512634879653037314, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5d8eacd2ae11a3246bbd97b898a72f04, type: 3}
+    - target: {fileID: 5512634879653037314, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: Victory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512634879653037314, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
       propertyPath: sounds.Array.data[0].volume
       value: 0.307
       objectReference: {fileID: 0}
@@ -1555,7 +1563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5512634879653037314, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
       propertyPath: sounds.Array.data[2].volume
-      value: 0.307
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512634879653037314, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
+      propertyPath: sounds.Array.data[3].volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5512634879653037315, guid: fabd9aa5294e15846be294c9ba657b51, type: 3}
       propertyPath: m_Name

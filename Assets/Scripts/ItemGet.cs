@@ -11,6 +11,7 @@ public class ItemGet : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             UnityEngine.SceneManagement.SceneManager.LoadScene("WinScene");
+            FindObjectOfType<AudioManager>().Play("Victory");
         }
     }
 }
