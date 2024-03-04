@@ -19,7 +19,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseY = (Input.GetAxis("Mouse Y")) * mouseSensitivity * Time.deltaTime;
         // Gets input for Y axis. Unity should be able to configure this for Joysticks. Kept framerate independent with deltaTime.
 
         xRotation -= mouseY;
@@ -35,5 +35,6 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
         // Applying the rotation variable value to the actual camera.
+        
     }
 }
