@@ -12,25 +12,26 @@ public class EnemyAI : MonoBehaviour
     bool walkPointSet;
     public float walkPointRange;
     public float sightRange;
-    public bool playerInSightRange
-    {
-        get{return _playerInSightRange;}
-        set {
-            if (value == false) walkPointSet = false;
-            _playerInSightRange = value;
-        }
-    }
+    public bool playerInSightRange;
+    // {
+    //     // get{return _playerInSightRange;}
+    //     // set {
+    //     //     if (value == false && _playerInSightRange == true) walkPointSet = false;
+    //     //     _playerInSightRange = value;
+    //     // }
+    // }
     private bool _playerInSightRange;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
+        animator.Play("Walk");
     }
     private void Update()
     {
-        if (walkPointSet == true) animator.Play("Walk");
-        else animator.Play("Idle");
+        //if (walkPointSet == true) animator.Play("Walk");
+        //else animator.Play("Idle");
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         if(!playerInSightRange)
         {
@@ -44,7 +45,12 @@ public class EnemyAI : MonoBehaviour
     private void Patrol()
     {
         if (!walkPointSet)SearchWalkPoint();
-        if (walkPointSet)enemy.SetDestination(walkPoint);
+        if (walkPointSet)
+        {
+            enemy.SetDestination(walkPoint);
+            enemy.speed = 1f;
+        }
+
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         if (distanceToWalkPoint.magnitude < 1f) walkPointSet = false;
     }
@@ -57,7 +63,8 @@ public class EnemyAI : MonoBehaviour
     }
     private void Chase()
     {
+        enemy.speed = 2.5f;
         enemy.SetDestination(player.position);
-        walkPointSet = true;
+        // walkPointSet = true;
     }
 }
